@@ -1,30 +1,13 @@
-import React, { useEffect, useState } from "react";
-import "./App.css";
+import React, { useState } from "react";
 import AddMarkerForm from "./components/AddMarkerForm";
 import MarkersList from "./components/MarkersList";
 import Map from "./components/Map";
 import { Col, Container, Row } from "react-bootstrap";
-
-import { Marker, Polyline } from "./types";
+import { Marker } from "./types";
+import "./App.css";
 
 function App() {
     const [markers, setMarkers] = useState<Marker[]>([]);
-    const [polyline, setPolyline] = useState<Polyline | null>(null);
-
-    useEffect(() => {
-        let updatedPolyline: Polyline = { location: [] };
-
-        markers.forEach((marker, index) => {
-            updatedPolyline.location.push(marker.location);
-
-            if (markers.length === index + 1) {
-                updatedPolyline.location.push(markers[0].location);
-            }
-        });
-
-        setPolyline(updatedPolyline);
-    }, [markers]);
-
     function addMarker(marker: Marker) {
         setMarkers([...markers, marker]);
     }
@@ -43,7 +26,7 @@ function App() {
                     <MarkersList markers={markers} onRemove={removeMarker} />
                 </Col>
                 <Col>
-                    <Map markers={markers} polyline={polyline} />
+                    <Map markers={markers} />
                 </Col>
             </Row>
         </Container>
