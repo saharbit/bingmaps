@@ -3,6 +3,7 @@ import { ReactBingmaps } from "react-bingmaps";
 import React, { useEffect, useState } from "react";
 import { BING_MEGA_SECRET_KEY } from "../constants";
 import { Marker, Polyline } from "../types";
+import "./Map.css";
 
 const headquarters = [32.07031, 34.78788];
 

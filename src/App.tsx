@@ -4,10 +4,10 @@ import MarkersList from "./components/MarkersList";
 import Map from "./components/Map";
 import { Col, Container, Row } from "react-bootstrap";
 import { Marker } from "./types";
-import "./App.css";
 
 function App() {
     const [markers, setMarkers] = useState<Marker[]>([]);
+
     function addMarker(marker: Marker) {
         setMarkers([...markers, marker]);
     }
